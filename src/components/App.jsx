@@ -4,6 +4,7 @@ import { Product } from './Product/Product';
 import { productsData } from 'Data/productsData';
 import css from './App.module.css';
 import Section from './Section/Section';
+import Modal from './Modal/Modal';
 import ProductForm from './ProductForm/ProductForm';
 import { nanoid } from 'nanoid';
 
@@ -69,6 +70,8 @@ export class App extends Component {
             })}
           </div>
         </Section>
+
+        <Modal />
       </div>
     );
   }
