@@ -6,6 +6,7 @@ export const Product = ({
   price,
   discount,
   hendleDeleteProduct,
+  openModal,
 }) => {
   const productBg = discount ? 'red' : 'green';
 
@@ -34,6 +35,13 @@ export const Product = ({
       <p>Price: {price}$</p>
       <button className={css.prodAddToCartBtn} type="button">
         Add to cart
+      </button>
+      <button
+        onClick={() => openModal({ title, discount, price })}
+        className={css.prodAddToCartBtn}
+        type="button"
+      >
+        See the details
       </button>
       <button
         onClick={() => hendleDeleteProduct(id)}

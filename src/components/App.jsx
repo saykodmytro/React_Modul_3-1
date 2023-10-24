@@ -12,6 +12,8 @@ export class App extends Component {
   state = {
     counterValue: 0,
     products: productsData,
+    isOpenModal: false,
+    modalData: null,
   };
 
   handleAddProduct = productData => {
@@ -41,6 +43,20 @@ export class App extends Component {
     });
   };
 
+  openModal = someDataToModal => {
+    this.setState({
+      isOpenModal: true,
+      modalData: someDataToModal,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      isOpenModal: false,
+      modalData: null,
+    });
+  };
+
   render() {
     const sortedProducts = [...this.state.products].sort(
       (a, b) => a.price - b.price
@@ -65,13 +81,19 @@ export class App extends Component {
                   price={price}
                   discount={discount}
                   hendleDeleteProduct={this.hendleDeleteProduct}
+                  openModal={this.openModal}
                 />
               );
             })}
           </div>
         </Section>
 
-        <Modal />
+        {this.state.isOpenModal && (
+          <Modal
+            closeModal={this.closeModal}
+            modalData={this.state.modalData}
+          />
+        )}
       </div>
     );
   }
