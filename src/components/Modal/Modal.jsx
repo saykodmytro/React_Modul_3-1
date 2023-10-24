@@ -1,15 +1,15 @@
+import css from './Modal.module.css';
 import React, { Component } from 'react';
-import { StyledModal } from './Styled';
 
 export default class Modal extends Component {
   render() {
     return (
-      <StyledModal>
-        <div className="modal">
-          <button className="closeBtn">&times</button>
+      <div className={css.modalContainer}>
+        <div className={css.modalWindow}>
+          <button className={css.closeBtn}>&times</button>
           <h2>Modal</h2>
         </div>
-      </StyledModal>
+      </div>
     );
   }
 }
