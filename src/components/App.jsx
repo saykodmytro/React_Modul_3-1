@@ -17,14 +17,20 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const stringifieldContact = localStorage.getItem('products');
-    const parsedContacts = JSON.parse(stringifieldContact) ?? productsData;
+    const stringifiedProducts = localStorage.getItem('products');
+    const parsedProducts = JSON.parse(stringifiedProducts) ?? productsData;
 
-    this.setState({ products: parsedContacts });
+    this.setState({ products: parsedProducts });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.products !== this.state.products) {
+      const stringifiedProducts = JSON.stringify(this.state.products);
+      localStorage.setItem('products', stringifiedProducts);
+    }
   }
 
   handleAddProduct = productData => {
-    // console.log('productData', productData);
     const hasDuplicates = this.state.products.some(
       product => product.title === productData.title
     );
@@ -40,7 +46,7 @@ export class App extends Component {
     };
 
     this.setState({
-      products: [...this.state.products, productData, finalProduct],
+      products: [...this.state.products, finalProduct],
     });
   };
   hendleDeleteProduct = productId => {

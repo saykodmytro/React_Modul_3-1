@@ -2,14 +2,14 @@ import css from './Modal.module.css';
 import React, { Component } from 'react';
 
 export default class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-    document.body.style.overflow = 'hidden';
-  }
+  // componentDidMount() {
+  //   window.addEventListener('keydown', this.handleKeyDown);
+  //   document.body.style.overflow = 'hidden';
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('keydown', this.handleKeyDown);
+  // }
 
   handleOverlayClick = evt => {
     if (evt.target === evt.currentTarget) {
@@ -36,6 +36,7 @@ export default class Modal extends Component {
             <p>Discount: {this.props.modalData.discount}$</p>
             <p>Price: {this.props.modalData.price}$</p>
           </div>
+          <button type="submit">Add Products</button>
         </div>
       </div>
     );
