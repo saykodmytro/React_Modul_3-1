@@ -16,6 +16,13 @@ export class App extends Component {
     modalData: null,
   };
 
+  componentDidMount() {
+    const stringifieldContact = localStorage.getItem('products');
+    const parsedContacts = JSON.parse(stringifieldContact) ?? productsData;
+
+    this.setState({ products: parsedContacts });
+  }
+
   handleAddProduct = productData => {
     // console.log('productData', productData);
     const hasDuplicates = this.state.products.some(
